@@ -1,4 +1,4 @@
-namespace flightTicket.Models;
+namespace IdentityTest.Models;
 
 public class ErrorViewModel
 {
