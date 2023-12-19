@@ -1,8 +1,8 @@
-﻿using IdentityTest.Models;
+﻿using FlightReservationProjectV2.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace IdentityTest.Controllers;
+namespace FlightReservationProjectV2.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

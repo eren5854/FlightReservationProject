@@ -1,4 +1,4 @@
-namespace IdentityTest.Models;
+namespace FlightReservationProjectV2.Models;
 
 public class ErrorViewModel
 {
