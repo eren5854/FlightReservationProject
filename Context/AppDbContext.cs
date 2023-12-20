@@ -1,19 +1,20 @@
-﻿using EntityLayer.Concrete;
+﻿using FlightReservationV3.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyModel.Resolution;
 
-namespace FlightReservationProjectV2.Context;
+namespace FlightReservationV3.Context;
 
-public class AppDbContext: DbContext
+public sealed class AppDbContext: IdentityDbContext<AppUser, AppRole, Guid>
 {
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public AppDbContext(DbContextOptions options): base(options)
     {
-        optionsBuilder.UseSqlServer("Data Source=EREN-DESKTOP\\SQLEXPRESS;Initial Catalog=FlightReservationV2Db;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+
     }
 
-    public DbSet<CityDetail> CityDetails { get; set; }
-    public DbSet<FlightDetail> FlightDetails { get; set; }
-    public DbSet<PlaneDetail> PlaneDetails { get; set; }
-    public DbSet<SeatDetail> SeatDetails { get; set; }
-    public DbSet<UserDetail> UserDetails { get; set; }
-    public DbSet<UserFlightDetail> UserFlightDetails { get; set; }
+    public DbSet<City> Cities { get; set; }
+    public DbSet<Flight> Flights { get; set; }
+    public DbSet<Plane> Planes { get; set; }
+    public DbSet<Seat> Seats { get; set; }
+    public DbSet<UserFlight> UserFlights { get; set; }
 }

@@ -1,21 +1,29 @@
-using FlightReservationProjectV2.Context;
+using FlightReservationV3.Context;
+using FlightReservationV3.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
-namespace FlightReservationProjectV2;
+namespace FlightReservationV3;
 
 public class Program
 {
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddScoped<AppDbContext>();
-        
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
-        var app = builder.Build();
+        builder.Services.AddDbContext<AppDbContext>(options =>
+        {
+            options.UseSqlServer("Data Source=EREN-DESKTOP\\SQLEXPRESS;Initial Catalog=FlightReservationV3Db;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        });
+        builder.Services.AddIdentityCore<AppUser>(opt =>
+        {
+            opt.Password.RequiredLength = 8;
+        }).AddEntityFrameworkStores<AppDbContext>();
 
-        
+        var app = builder.Build();
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -35,6 +43,23 @@ public class Program
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        using (var scoped = app.Services.CreateScope())
+        {
+            var userManager = scoped.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+            if (userManager.Users.Any())
+            {
+                userManager.CreateAsync(new()
+                {
+                    Email = "y225012058@ogr.sakarya.edu.tr",
+                    UserName = "Ýhsan",
+                    UserFirstName = "Eren",
+                    UserLastName = "Delibaþ",
+                    EmailConfirmed = true,
+                }, "sau").Wait();
+            }
+        }
+
 
         app.Run();
     }

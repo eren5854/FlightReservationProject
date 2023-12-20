@@ -1,8 +1,8 @@
-﻿using FlightReservationProjectV2.Models;
+﻿using FlightReservationV3.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace FlightReservationProjectV2.Controllers;
+namespace FlightReservationV3.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
