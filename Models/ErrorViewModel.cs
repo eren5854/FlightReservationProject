@@ -1,4 +1,4 @@
-namespace FlightReservationV3.Models;
+namespace FlightReservationProject.Models;
 
 public class ErrorViewModel
 {

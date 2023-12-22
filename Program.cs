@@ -1,9 +1,4 @@
-using FlightReservationV3.Context;
-using FlightReservationV3.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-
-namespace FlightReservationV3;
+namespace FlightReservationProject;
 
 public class Program
 {
@@ -13,15 +8,6 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-
-        builder.Services.AddDbContext<AppDbContext>(options =>
-        {
-            options.UseSqlServer("Data Source=EREN-DESKTOP\\SQLEXPRESS;Initial Catalog=FlightReservationV3Db;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-        });
-        builder.Services.AddIdentityCore<AppUser>(opt =>
-        {
-            opt.Password.RequiredLength = 8;
-        }).AddEntityFrameworkStores<AppDbContext>();
 
         var app = builder.Build();
 
@@ -43,23 +29,6 @@ public class Program
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
-
-        using (var scoped = app.Services.CreateScope())
-        {
-            var userManager = scoped.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-            if (userManager.Users.Any())
-            {
-                userManager.CreateAsync(new()
-                {
-                    Email = "y225012058@ogr.sakarya.edu.tr",
-                    UserName = "Ýhsan",
-                    UserFirstName = "Eren",
-                    UserLastName = "Delibaþ",
-                    EmailConfirmed = true,
-                }, "sau").Wait();
-            }
-        }
-
 
         app.Run();
     }
