@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<h1> @_localization.GetKey("LoginPage").Value</h1>
+
+<ul class="dropdown-menu">
+    <li>
+        <a asp-controller="Shared"
+        asp-action="changeLanguage"
+        asp-route-culture="en-US"
+        class="dropdown-item">
+        English
+        </a>
+    </li>
+
+    <li>
+        <a asp-controller="Shared"
+           asp-action="changeLanguage"
+           asp-route-culture="tr-TR"
+           class="dropdown-item">
+            Türkçe
+        </a>
+    </li>
+</ul>
