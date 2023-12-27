@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\FlightReservationProject.bundle.scp.css"
     },
     {
+      "Id": "E:\\Eren\\Projeler\\MVC\\FlightReservationProject\\wwwroot\\css\\login-style.css",
+      "PackagePath": "staticwebassets\\css\\login-style.css"
+    },
+    {
       "Id": "E:\\Eren\\Projeler\\MVC\\FlightReservationProject\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "E:\\Eren\\Projeler\\MVC\\FlightReservationProject\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "E:\\Eren\\Projeler\\MVC\\FlightReservationProject\\wwwroot\\img\\hero-bg.jpg",
+      "PackagePath": "staticwebassets\\img\\hero-bg.jpg"
+    },
+    {
+      "Id": "E:\\Eren\\Projeler\\MVC\\FlightReservationProject\\wwwroot\\img\\login-bg.png",
+      "PackagePath": "staticwebassets\\img\\login-bg.png"
     },
     {
       "Id": "E:\\Eren\\Projeler\\MVC\\FlightReservationProject\\wwwroot\\js\\site.js",
