@@ -12,28 +12,28 @@
 <div class="login">
     <img src="~/img/hero-bg.jpg" alt="image" class="login__bg">
 
-    <form action="" class="login__form" style="border: 2px solid rgb(26,26,26); backdrop-filter: blur(50px);">
+    <form asp-controller="Account" asp-action="Register" method="post" autocomplete="off" class="login__form" style="border: 2px solid rgb(26,26,26); backdrop-filter: blur(50px);">
         <h1 style="color: rgb(26,26,26)" class="login__title">@_localization.GetKey("RegisterPage").Value</h1>
 
         <div class="login__inputs">
 
             <div class="login__box">
-                <input type="text" placeholder="@_localization.GetKey("FirstName").Value" required class="login__input">
+                <input type="text" placeholder="@_localization.GetKey("FirstName").Value" required class="login__input" name="firstName">
                 <i class="ri-user-fill"></i>
             </div>
 
             <div class="login__box">
-                <input type="text" placeholder="@_localization.GetKey("LastName").Value" required class="login__input">
+                <input type="text" placeholder="@_localization.GetKey("LastName").Value" required class="login__input" name="lastName">
                 <i class="ri-user-fill"></i>
             </div>
 
             <div class="login__box">
-                <input type="email" placeholder="@_localization.GetKey("Email").Value" required class="login__input">
+                <input type="email" placeholder="@_localization.GetKey("Email").Value" required class="login__input" name="email">
                 <i class="ri-mail-fill"></i>
             </div>
 
             <div class="login__box">
-                <input type="password" placeholder="@_localization.GetKey("Password").Value" required class="login__input">
+                <input type="password" placeholder="@_localization.GetKey("Password").Value" required class="login__input" name="password">
                 <i class="ri-lock-2-fill"></i>
             </div>
         </div>
@@ -43,10 +43,23 @@
         <div class="login__register">
             @_localization.GetKey("DoYouHaveAlreadyAnAccount") <a asp-controller="Account" asp-action="Login">@_localization.GetKey("Login")</a>
         </div>
+        <div>
+            <p>@TempData["KayıtHatası"]</p>
+        </div>
         <ul class="navbar-nav">
             <li class="nav-item dropdown" style="justify-content: center">
                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:20%">
                     <i class="fa fa-language" style="font-size:30px; color: #fff;"></i>
+                    <p>
+                        @if (ViewBag.SelectedLanguage == "en-US")
+                        {
+                            @_localization.GetKey("English").Value
+                        }
+                        else
+                        {
+                            @_localization.GetKey("Turkish").Value
+                        }
+                    </p>
                 </a>
                 <ul class="dropdown-menu">
                     <li>

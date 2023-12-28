@@ -132,6 +132,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>Ad</value>
   </data>
+  <data name="FlightReservationProject" xml:space="preserve">
+    <value>Uçuş Rezervasyon Projesi</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Soyad</value>
   </data>
@@ -149,6 +152,12 @@
   </data>
   <data name="RegisterPage" xml:space="preserve">
     <value>Kayıt Sayfası</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>Kayıt İşlemi Başarılı</value>
+  </data>
+  <data name="ReturnLogin" xml:space="preserve">
+    <value>xxx</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Kayıt Ol</value>

@@ -132,6 +132,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="FlightReservationProject" xml:space="preserve">
+    <value>Flight Reservation Project</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Last Name</value>
   </data>
@@ -149,6 +152,12 @@
   </data>
   <data name="RegisterPage" xml:space="preserve">
     <value>Register Page</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>Register is success</value>
+  </data>
+  <data name="ReturnLogin" xml:space="preserve">
+    <value>xxx</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign In</value>

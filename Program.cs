@@ -53,11 +53,12 @@ public class Program
 
         #region Authentication
         //Authentication yapýsý. Yetkisiz bir durumda otomatik olarak login sayfasýna yönlendirilecek.
-        builder.Services.AddAuthentication().AddCookie(configuration =>
+        builder.Services.AddAuthentication("CookieAuth").AddCookie("CookieAuth", configuration =>
         {
             configuration.AccessDeniedPath = "/Account/Login";
             configuration.LogoutPath = "/Account/Login";
             configuration.ExpireTimeSpan = TimeSpan.FromHours(1);
+            configuration.Cookie.Name = "UserLoinCookie";
         });
         #endregion
 
