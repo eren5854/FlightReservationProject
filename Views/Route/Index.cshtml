@@ -1,0 +1,157 @@
+﻿@using FlightReservationProject.DTOs
+@model RouteDto
+@{
+    int index = 0;
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@_localization.GetKey("Routes")</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Admin" asp-action="Index">@_localization.GetKey("Home")</a></li>
+                    <li class="breadcrumb-item active">@_localization.GetKey("Routes")</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@_localization.GetKey("RouteList")</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <button data-toggle="modal" data-target="#addModal" class="btn btn-dark">
+                    <i class="fa fa-plus me-1"></i>
+                    @_localization.GetKey("Add").Value
+                </button>
+            </div>
+            <p class="text-danger">@TempData["DepartureTimeError"]</p>
+
+            <div class="form-group mt-2">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kalkış Yeri</th>
+                            <th>İniş Yeri</th>
+                            <th>Kalkış Zamanı</th>
+                            <th>İniş Zamanı</th>
+                            <th>Uçak Modeli</th>
+                            <th>Uçak Kuyruk Numarası</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var route in Model.Routes)
+                        {
+                            index++;
+                            <tr>
+                                <td>@index</td>
+                                <td>@route.Departure</td>
+                                <td>@route.Arrival</td>
+                                <td>@route.DepartureTime</td>
+                                <td>@route.ArrivalTime</td>
+                                <td>@route.Plane!.Name</td>
+                                <td>@route.Plane!.TailNumber</td>
+                                <td>
+                                    <a href="/Route/RemoveById?id=@route.Id" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa fa-trash"></i>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            Footer
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
+
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">@_localization.GetKey("AddForm").Value</h1>
+                <i class="fa fa-x" data-bs-dismiss="modal"></i>
+            </div>
+            <form asp-controller="Route" asp-action="Add" method="post" autocomplete="off">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>@_localization.GetKey("Departure").Value</label>
+                        <select class="form-control" name="departure">
+                            <option>Kayseri</option>
+                            <option>Ankara</option>
+                            <option>İstanbul</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-1">
+                        <label>@_localization.GetKey("Arrival").Value</label>
+                        <select class="form-control" name="arrival">
+                            <option>Kayseri</option>
+                            <option>Ankara</option>
+                            <option>İstanbul</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-1">
+                        <label>@_localization.GetKey("DepartureTime").Value</label>
+                        <input 
+                            required 
+                            type="datetime-local" 
+                            class="form-control" 
+                            name="departureTime" 
+                            value="@DateTime.Now.ToString("yyyy-MM-dd HH:dd")" />
+                    </div>
+                    <div class="form-group mt-1">
+                        <label>@_localization.GetKey("ArrivalTime").Value</label>
+                        <input required
+                               type="datetime-local"
+                               class="form-control"
+                               name="arrivalTime"
+                               value="@DateTime.Now.ToString("yyyy-MM-dd HH:dd")" />
+                    </div>
+                    <div class="form-group mt-1">
+                        <label>@_localization.GetKey("Plane").Value</label>
+                        <select required class="form-control" name="planeId">
+                            @foreach (var plane in Model.Planes)
+                            {
+                                <option value="@plane.Id">@plane.Name @plane.TailNumber</option>
+                            }
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-dark w-100">@_localization.GetKey("Save").Value</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

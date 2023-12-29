@@ -141,6 +141,9 @@
   <data name="Login" xml:space="preserve">
     <value>Giriş Yap</value>
   </data>
+  <data name="loginError" xml:space="preserve">
+    <value>Kullanıcı Bulunamadı! Eposta yada şifre hatalı!</value>
+  </data>
   <data name="LoginPage" xml:space="preserve">
     <value>Giriş Sayfası</value>
   </data>
@@ -149,6 +152,12 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Şifre</value>
+  </data>
+  <data name="Planes" xml:space="preserve">
+    <value>Uçaklar</value>
+  </data>
+  <data name="RegisterError" xml:space="preserve">
+    <value>Bu kullanıcı zaten kayıtlı!</value>
   </data>
   <data name="RegisterPage" xml:space="preserve">
     <value>Kayıt Sayfası</value>
@@ -159,10 +168,16 @@
   <data name="ReturnLogin" xml:space="preserve">
     <value>xxx</value>
   </data>
+  <data name="Routes" xml:space="preserve">
+    <value>Güzergahlar</value>
+  </data>
   <data name="SignIn" xml:space="preserve">
     <value>Kayıt Ol</value>
   </data>
   <data name="Turkish" xml:space="preserve">
     <value>Türkçe</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Kayıtlı Kullanıcılar</value>
   </data>
 </root>

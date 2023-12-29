@@ -1,5 +1,6 @@
 using FlightReservationProject.Context;
 using FlightReservationProject.Models;
+using FlightReservationProject.Repositories;
 using FlightReservationProject.Services;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,12 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddScoped<UserRepository>();
+        builder.Services.AddScoped<PlaneRepository>();
+        builder.Services.AddScoped<RouteRepository>();
+
+
 
         #region Localization
         //Localization yapýsý

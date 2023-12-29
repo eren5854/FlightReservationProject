@@ -17,12 +17,12 @@
         
         <div class="login__inputs">
             <div class="login__box">
-                <input type="email" placeholder="@_localization.GetKey("Email").Value" required class="login__input" name="email">
+                <input type="email" placeholder="@_localization.GetKey("Email").Value" required class="login__input" name="email" value="@TempData["Email"]"
                 <i class="ri-mail-fill"></i>
             </div>
 
             <div class="login__box">
-                <input type="password" placeholder="@_localization.GetKey("Password").Value" required class="login__input" name="password">
+                <input type="password" placeholder="@_localization.GetKey("Password").Value" required class="login__input" name="password" value="@TempData["Password"]">
                 <i class="ri-lock-2-fill"></i>
             </div>
         </div>
@@ -33,7 +33,7 @@
             @_localization.GetKey("DoYouHaveNotAnAccount").Value <a asp-controller="Account" asp-action="Register">@_localization.GetKey("SignIn").Value</a>
         </div>
         <div>
-            <p>@TempData["LoginError"]</p>
+            <p class="text-danger">@TempData["LoginError"]</p>
         </div>
     </form>
 </div>

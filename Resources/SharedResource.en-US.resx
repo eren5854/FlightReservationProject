@@ -141,6 +141,9 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="loginError" xml:space="preserve">
+    <value>User not found! Email or password is incorrect!</value>
+  </data>
   <data name="LoginPage" xml:space="preserve">
     <value>Login Page</value>
   </data>
@@ -149,6 +152,12 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="Planes" xml:space="preserve">
+    <value>Planes</value>
+  </data>
+  <data name="RegisterError" xml:space="preserve">
+    <value>This user already registered!</value>
   </data>
   <data name="RegisterPage" xml:space="preserve">
     <value>Register Page</value>
@@ -159,10 +168,16 @@
   <data name="ReturnLogin" xml:space="preserve">
     <value>xxx</value>
   </data>
+  <data name="Routes" xml:space="preserve">
+    <value>Routes</value>
+  </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign In</value>
   </data>
   <data name="Turkish" xml:space="preserve">
     <value>Turkish</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
   </data>
 </root>

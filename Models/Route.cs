@@ -10,6 +10,7 @@ public sealed class Route
     public string Departure { get; set; } = string.Empty;
     public string Arrival { get; set; } = string.Empty;
     public DateTime DepartureTime { get; set; }
+    public DateTime ArrivalTime { get; set; }
     public Guid PlaneId { get; set; }
     public Plane? Plane { get; set; }
 }

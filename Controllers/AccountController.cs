@@ -1,6 +1,7 @@
 ﻿using FlightReservationProject.Context;
 using FlightReservationProject.DTOs;
 using FlightReservationProject.Models;
+using FlightReservationProject.Repositories;
 using FlightReservationProject.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +12,13 @@ public class AccountController : Controller
 {
     private LanguageService _localization;
     private readonly ApplicationDbContext _context;
+    private readonly UserRepository _userRepository;
 
-    public AccountController(LanguageService localization, ApplicationDbContext context)
+    public AccountController(LanguageService localization, ApplicationDbContext context, UserRepository userRepository)
     {
         _localization = localization;
         _context = context;
+        _userRepository = userRepository;
     }
 
     public IActionResult Login()
@@ -29,10 +32,13 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(LoginDto request)
     {
-        User? user = _context.Set<User>().Where(p=>p.Email == request.Email && p.Password == request.Password).FirstOrDefault();
+        User? user = _userRepository.GetUserByEmailAndPassword(request.Email, request.Password);
         if (user is null)
         {
-            TempData["LoginError"] = "Kullanıcı Bulunamadı! Şifre veya Eposta hatalı!";
+            string message = _localization.GetKey("loginError");
+            TempData["LoginError"] = message;
+            TempData["Email"] = request.Email;
+            TempData["Password"] = request.Password;
             return RedirectToAction("Login");
         }
         var claims = new List<Claim>()
@@ -44,7 +50,15 @@ public class AccountController : Controller
         var claimsIdentity = new ClaimsIdentity(claims, "CookieAuth");
         var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
+        List<string> roles = _userRepository.GetUserRoleByUserId(user.Id);
+
         await HttpContext.SignInAsync(claimsPrincipal);
+
+        if (roles.Contains("Admin"))
+        {
+            return RedirectToAction("Index", "Admin");
+        }
+
         return RedirectToAction("Index", "Home");
     }
 
@@ -57,10 +71,11 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Register(RegisterDto request)
     {
-        User? user = _context.Set<User>().Where(p=>p.Email == request.Email).FirstOrDefault();
+        User? user = _userRepository.GetUserByEmail(request.Email);
         if(user is not null)
         {
-            TempData["KayıtHatası"] = "Bu email kullanılıyor";
+            string message = _localization.GetKey("RegisterError");
+            TempData["KayıtHatası"] = message;
             return RedirectToAction("Register", "Account");
         }
 
@@ -72,8 +87,7 @@ public class AccountController : Controller
             Password = request.Password,
         };
 
-        _context.Add(user);
-        _context.SaveChanges();
+        _userRepository.Add(user);
         return RedirectToAction("RegisterSuccess");
     }
 

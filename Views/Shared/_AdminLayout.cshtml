@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
 </head>
 <body>
 
@@ -27,17 +28,28 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fa fa-language text-primary" style="font-size:30px"></i>
+                    <a class="nav-link d-flex" data-toggle="dropdown" href="#">
+                        <i class="fa fa-language" style="font-size:30px; color: #000;"></i>
+                        <span class="ml-2" style="font-size:20px">
+                            @if (ViewBag.SelectedLanguage == "en-US")
+                            {
+                                @_localization.GetKey("English").Value
+                            }
+                            else
+                            {
+                                @_localization.GetKey("Turkish").Value
+                            }
+                        </span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a class="dropdown-item" asp-controller="Shared" asp-action="ChangeLanguage" asp-route-culture="en-US">
-                            English
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" asp-controller="Shared" asp-action="ChangeLanguage" asp-route-culture="tr-TR">
-                            Türkçe
-                        </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">    
+                            <a class="dropdown-item" asp-controller="Shared" asp-action="ChangeLanguage" asp-route-culture="en-US">
+                                @_localization.GetKey("English").Value
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-controller="Shared" asp-action="ChangeLanguage" asp-route-culture="tr-TR">
+                                @_localization.GetKey("Turkish").Value
+                            </a>
+                        
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -53,7 +65,7 @@
             <!-- Brand Logo -->
             <a asp-controller="Admin" asp-action="Index" class="brand-link">
                 <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">@_localization.GetKey("FlightReservation").Value</span>
+                <span class="brand-text font-weight-light">@_localization.GetKey("FlightReservationProject").Value</span>
             </a>
 
             <!-- Sidebar -->
@@ -85,14 +97,20 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
                             <a asp-controller="Planes" asp-action="Index" class="nav-link">
-                                <i class="nav-icon fa fa-plane text-warning"></i>
+                                <i class="nav-icon fa fa-plane text-primary"></i>
                                 <p>@_localization.GetKey("Planes").Value</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="Routes" asp-action="Index" class="nav-link">
-                                <i class="nav-icon fa fa-route text-warning"></i>
+                            <a asp-controller="Route" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fa fa-route text-danger"></i>
                                 <p>@_localization.GetKey("Routes").Value</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Routes" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fa fa-user text-warning"></i>
+                                <p>@_localization.GetKey("Users").Value</p>
                             </a>
                         </li>
                     </ul>
@@ -121,6 +139,8 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
+
+    <script src="https://kit.fontawesome.com/5ff4fe19e2.js" crossorigin="anonymous"></script>
 
 
     <script src="/plugins/jquery/jquery.min.js"></script>
