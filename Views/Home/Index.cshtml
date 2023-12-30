@@ -1,99 +1,110 @@
-﻿@{
+﻿@model IEnumerable<Route>
+@{
+    int index = 0;
+    
     ViewData["Title"] = "Home Page";
+    foreach(var item in Model)
+    {
+        
+    }
+    // var date = (DateTime)ViewBag.Date;
 }
 <!-- ======= About Section ======= -->
-<section id="about" class="about">
-    <div class="container">
-        <div class="row">
-            <div class="prefence-area">
-                <div class="location-section mt-5">
-                    <div class="from-where">
-                        <li class="dropdown">
-                            <a><span>Nereden</span> <i class="bi bi-chevron-right"></i></a>
-                            <input type="text">
-                            <ul>
-                                <li><a>İstanbul</a></li>
-                                <li><a>Ankara</a></li>
-                                <li><a>Sivas</a></li>
-                                <li><a>İzmir</a></li>
-                                <li><a>Dalaman</a></li>
-                            </ul>
-                        </li>
+<section id="about" class="about" style="margin-top:-500px;">
+    <div class="container" style="border-radius:20px;">
+        <div class="row" style="height:500px;">
+            <div class="prefence-area mt-5">
+                <form asp-controller="Home" asp-action="Index" method="post" autocomplete="off">
+                    <div class="d-flex" style="gap:20px">
+                        <div class="form-group w-100">
+                            <label>@_localization.GetKey("Departure").Value</label>
+                            <select class="form-control" name="departure" value="" required>
+                                <option>@TempData["Departure"]</option>
+                                <option value="Kayseri">Kayseri</option>
+                                <option value="Ankara">Ankara</option>
+                                <option value="İstanbul">İstanbul</option>
+                                <option value="Bursa">Bursa</option>
+                            </select>
+                        </div>
 
+                        <div class="form-group w-100">
+                            <label>@_localization.GetKey("Arrival").Value</label>
+                            <select class="form-control" name="arrival" required>
+                                <option>@TempData["Arrival"]</option>
+                                <option>Kayseri</option>
+                                <option>Ankara</option>
+                                <option>İstanbul</option>
+                                <option>Bursa</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group w-100">
+                            <label>@_localization.GetKey("Date").Value</label>
+                            <input class="form-control" type="date" name="date" value="" required/>
+                        </div>
+
+                        <div class="form-group w-100">
+                            <label>@_localization.GetKey("Operations").Value</label>
+                            <button type="submit" class="btn btn-dark w-100">
+                                @_localization.GetKey("Search").Value
+                            </button>
+                        </div>
                     </div>
-
-                    <div class="from-where">
-                        <li class="dropdown">
-                            <a><span>Nereye</span> <i class="bi bi-chevron-right"></i></a>
-                            <input type="text">
-                            <ul>
-                                <li><a>İstanbul</a></li>
-                                <li><a>Ankara</a></li>
-                                <li><a>Sivas</a></li>
-                                <li><a>İzmir</a></li>
-                                <li><a>Dalaman</a></li>
-                            </ul>
-                        </li>
-                    </div>
-
-                    <div class="from-where">
-                        <li class="dropdown">
-                            <a><span>Gidiş T.</span> <i class="bi bi-chevron-right"></i></a>
-                            <input type="date">
-                        </li>
-                    </div>
-
-                    <div class="from-where">
-                        <li class="dropdown">
-                            <a><span>Dönüş T.</span> <i class="bi bi-chevron-right"></i></a>
-                            <input type="date">
-                        </li>
-                    </div>
-
-                    <div class="from-where">
-                        <li class="dropdown">
-                            <a><span>Yolcu Sayısı</span> <i class="bi bi-chevron-right"></i></a>
-                            <input type="text">
-                            <ul>
-                                <li><a>Yetişkin</a><button>-</button><p>1</p><button>+</button></li>
-                                <li><a>Çocuk</a></li>
-                                <li><a>Bebek</a></li>
-                            </ul>
-                        </li>
-                    </div>
-                </div>
-
+                </form>
+                <p>@TempData["DateError"]</p>
+                @* <hr /> *@
+                <table class="table table-bordered table-hover mt-4">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>@_localization.GetKey("Departure").Value</th>
+                            <th>@_localization.GetKey("Arrival").Value</th>
+                            <th>@_localization.GetKey("DepartureTime").Value</th>
+                            <th>@_localization.GetKey("ArrivalTime").Value</th>
+                            <th>@_localization.GetKey("PlaneName").Value</th>
+                            <th>@_localization.GetKey("PlaneTailNumber").Value</th>
+                            <th>@_localization.GetKey("SeatNumber").Value</th>
+                            <th>@_localization.GetKey("Operations").Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            index++;
+                            <form asp-controller="Home" asp-action="AddTicket" method="post">
+                            <tr>
+                                <td>@index</td>
+                                <td>@item.Departure</td>
+                                <td>@item.Arrival</td>
+                                <td>@item.DepartureTime</td>
+                                <td>@item.ArrivalTime</td>
+                                <td>@item.Plane!.Name</td>
+                                <td>@item.Plane.TailNumber</td>
+                                <td>
+                                    <input hidden="hidden" name="routeId" value="@item.Id" />
+                                    <select class="form-control" name="seatNumber">
+                                            @for (int i = 1; i <= item.Plane.TotalSeats; i++)
+                                            {
+                                            <option>@i</option>
+                                            }
+                                    </select>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-dark">@_localization.GetKey("Select").Value</button>
+                                </td>
+                            </tr>
+                            </form>
+                        }
+                    </tbody>
+                </table>
             </div>
-
-            <!-- <div class="col-lg-6 video-box align-self-baseline position-relative">
-              <img src="assets/img/about.jpg" class="img-fluid" alt="">
-              <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
-            </div> -->
-            <!-- <div class="col-lg-6 pt-3 pt-lg-0 content">
-              <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bx bx-check-double"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bx bx-check-double"></i> Voluptate repellendus pariatur reprehenderit corporis sint.</li>
-                <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum
-              </p>
-            </div> -->
 
         </div>
 
     </div>
 </section><!-- End About Section -->
 <!-- ======= Cta Section ======= -->
-<section id="cta" class="cta">
+@* <section id="cta" class="cta">
     <div class="container" data-aos="fade-in">
 
         <div class="text-center">
@@ -103,6 +114,5 @@
         </div>
 
     </div>
-</section><!-- End Cta Section -->
+</section><!-- End Cta Section --> *@
 
-    

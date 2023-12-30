@@ -18,6 +18,7 @@ public class RouteController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.SelectedLanguage = _localization.GetCurrentLanguage(Request);
         IEnumerable<Route> routes = _routeRepository.GetAll();
         IEnumerable<Plane> planes = _routeRepository.GetAllPlane();
         RouteDto response = new()

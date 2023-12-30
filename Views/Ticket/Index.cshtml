@@ -1,0 +1,74 @@
+﻿@using FlightReservationProject.Models 
+@using System.Security.Claims
+@model IEnumerable<Ticket>
+
+@{
+    int index = 0;
+}
+
+<link rel="stylesheet" href="/css/ticket-style.css" />
+
+<style>
+    .rotate-text{
+        transform: rotate(270deg); /* Yazıyı 90 derece döndürme */
+        transform-origin: left bottom; /* Dönme merkezi sol alt köşe */
+         /* Yazının bir satırda kalmasını sağlama */
+        width:200px;
+        margin-left: 250px;
+        margin-top: 150px;
+        font-size: 20px;
+    }
+</style>
+
+<section id="about" class="about" style="margin-top:-500px; background-color:transparent">
+    <div class="container" style="border-radius:20px;">
+        <div class="row" >
+            <section class="container mt-4">
+                @* <h1>@_localization.GetKey("TicketPage").Value</h1> *@
+                
+                @foreach (var ticket in Model)
+                {
+                index++;
+                <div class="card fl-left">
+                    <section class="date">
+                        <time datetime="23th feb">
+                        <label class="rotate-text">@_localization.GetKey("FlightTicket")</label>
+                        </time>
+                    </section>
+                    <section class="card-cont" style="height: 200px">
+                        <h5>@User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Name)!.Value</h5>
+                        <h3>live in sydney</h3>
+                        <div>
+                            <i class="fa fa-calendar"></i>
+                            <time>
+                                <span class="ml-5">@ticket.Route.DepartureTime.ToString("dd/MM/yyyy")</span>
+                                <span>
+                                        @ticket.Route.DepartureTime.ToString("HH:mm") <i class="fa-solid fa-arrow-right"></i>
+                                    @ticket.Route.ArrivalTime.ToString("HH:mm")
+                                </span>
+                            </time>
+                        </div>
+
+
+                            <p><i class="fa-solid fa-chair"></i>@_localization.GetKey("SeatNumber") <i class="fa-solid fa-arrow-right"></i> @ticket.SeatNumber</p>
+                            <label><i class="fa-solid fa-plane"></i>@_localization.GetKey("PlaneName") <i class="fa-solid fa-arrow-right"></i> @ticket.Route.Plane.Name</label>
+                            <p>@_localization.GetKey("PlaneTailNumber") <i class="fa-solid fa-arrow-right"></i> @ticket.Route.Plane.TailNumber</p>
+                                
+
+                        <div class="">
+                            <p>
+                                <i class="fa fa-map-marker"></i>
+                                    @ticket.Route.Departure <i class="fa-solid fa-arrow-right"></i>
+                                @ticket.Route.Arrival
+                            </p>
+                        </div>
+                        @if(ticket.Route.ArrivalTime <= DateTime.Now){
+                                <p class="text-danger">@_localization.GetKey("FlightComplateWarning")</p>
+                            }
+                    </section>
+                </div>
+                }
+            </section>
+        </div>
+    </div>
+</section>

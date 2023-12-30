@@ -19,8 +19,7 @@ public class Program
         builder.Services.AddScoped<UserRepository>();
         builder.Services.AddScoped<PlaneRepository>();
         builder.Services.AddScoped<RouteRepository>();
-
-
+        builder.Services.AddScoped<TicketRepository>();
 
         #region Localization
         //Localization yapýsý
@@ -125,6 +124,18 @@ public class Program
                     UserId = user.Id
                 });
 
+                context.SaveChanges();
+            }
+            if (!context.Set<User>().Any(p=>p.Email == "emin@gmail.com"))
+            {
+                User user1 = new()
+                {
+                    FirstName = "Mehmet Emin",
+                    LastName = "Delibaþ",
+                    Email = "emin@gmail.com",
+                    Password = "emin123"
+                };
+                context.Set<User>().Add(user1);
                 context.SaveChanges();
             }
         }

@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
+  <data name="AddForm" xml:space="preserve">
+    <value>Form Ekle</value>
+  </data>
+  <data name="Arrival" xml:space="preserve">
+    <value>Varış</value>
+  </data>
+  <data name="ArrivalTime" xml:space="preserve">
+    <value>Varış Zamanı</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>İletişim Bilgileri</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
+  <data name="Departure" xml:space="preserve">
+    <value>Kalkış</value>
+  </data>
+  <data name="DepartureTime" xml:space="preserve">
+    <value>Kalkış Zamanı</value>
+  </data>
+  <data name="DesignedBy" xml:space="preserve">
+    <value>Tasarlayan</value>
+  </data>
   <data name="DoYouHaveAlreadyAnAccount" xml:space="preserve">
     <value>Bir hesabın var mı?</value>
   </data>
@@ -129,11 +156,26 @@
   <data name="English" xml:space="preserve">
     <value>İngilizce</value>
   </data>
+  <data name="EsentepeCampus" xml:space="preserve">
+    <value>Esentepe Kampüs</value>
+  </data>
   <data name="FirstName" xml:space="preserve">
     <value>Ad</value>
   </data>
+  <data name="FlightComplateWarning" xml:space="preserve">
+    <value>Bu Uçuş Tamamlandı! Bilet Geçersiz!</value>
+  </data>
   <data name="FlightReservationProject" xml:space="preserve">
     <value>Uçuş Rezervasyon Projesi</value>
+  </data>
+  <data name="FlightTicket" xml:space="preserve">
+    <value>Eren Havayolları</value>
+  </data>
+  <data name="FooterDescription" xml:space="preserve">
+    <value>Bu web site 2023-2024 güz dönemi web programlama dersi proje ödevidir.</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Ana Sayfa</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Soyad</value>
@@ -147,14 +189,41 @@
   <data name="LoginPage" xml:space="preserve">
     <value>Giriş Sayfası</value>
   </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Çıkış</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>Tamam</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>İşlemler</value>
+  </data>
+  <data name="PassengerCapacity" xml:space="preserve">
+    <value>Yolcu Kapasitesi</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Şifre</value>
   </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="Plane" xml:space="preserve">
+    <value>Uçak</value>
+  </data>
+  <data name="PlaneList" xml:space="preserve">
+    <value>Uçak Listesi</value>
+  </data>
+  <data name="PlaneName" xml:space="preserve">
+    <value>Uçak Adı</value>
+  </data>
   <data name="Planes" xml:space="preserve">
     <value>Uçaklar</value>
+  </data>
+  <data name="PlaneTailNumber" xml:space="preserve">
+    <value>Uçak Kuyruk Numarası</value>
+  </data>
+  <data name="PleaseSelectYourTicketBelow" xml:space="preserve">
+    <value>Lütfen Aşağıdan Biletinizi Seçiniz</value>
   </data>
   <data name="RegisterError" xml:space="preserve">
     <value>Bu kullanıcı zaten kayıtlı!</value>
@@ -168,16 +237,58 @@
   <data name="ReturnLogin" xml:space="preserve">
     <value>xxx</value>
   </data>
+  <data name="RouteList" xml:space="preserve">
+    <value>Güzergah Listesi</value>
+  </data>
   <data name="Routes" xml:space="preserve">
     <value>Güzergahlar</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Bilet Ara</value>
+  </data>
+  <data name="SeatConfiguration" xml:space="preserve">
+    <value>Koltuk Ayarı</value>
+  </data>
+  <data name="SeatDesign" xml:space="preserve">
+    <value>Koltuk Düzeni</value>
+  </data>
+  <data name="SeatNumber" xml:space="preserve">
+    <value>Koltuk Numarası</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Seç</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Kayıt Ol</value>
   </data>
+  <data name="Tickets" xml:space="preserve">
+    <value>Biletler</value>
+  </data>
+  <data name="TotalSeats" xml:space="preserve">
+    <value>Toplam Koltuk</value>
+  </data>
+  <data name="Turkey" xml:space="preserve">
+    <value>Türkiye</value>
+  </data>
   <data name="Turkish" xml:space="preserve">
     <value>Türkçe</value>
   </data>
+  <data name="UsefulLinks" xml:space="preserve">
+    <value>Kullanışlı Bağlantılar</value>
+  </data>
   <data name="Users" xml:space="preserve">
     <value>Kayıtlı Kullanıcılar</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versiyon</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Eren Hava Yollarına Hoşgeldiniz</value>
+  </data>
+  <data name="WelcomeAdminPage" xml:space="preserve">
+    <value>Admin Sayfasına Hoşgeldiniz</value>
   </data>
 </root>

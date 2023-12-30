@@ -5,7 +5,6 @@
     Layout = "../Shared/_AdminLayout.cshtml";
 }
 
-<!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -19,13 +18,11 @@
                 </ol>
             </div>
         </div>
-    </div><!-- /.container-fluid -->
+    </div>
 </section>
 
-<!-- Main content -->
 <section class="content">
 
-    <!-- Default box -->
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">@_localization.GetKey("RouteList")</h3>
@@ -53,13 +50,13 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Kalkış Yeri</th>
-                            <th>İniş Yeri</th>
-                            <th>Kalkış Zamanı</th>
-                            <th>İniş Zamanı</th>
-                            <th>Uçak Modeli</th>
-                            <th>Uçak Kuyruk Numarası</th>
-                            <th>İşlemler</th>
+                            <th> @_localization.GetKey("Departure").Value</th>
+                            <th> @_localization.GetKey("Arrival").Value</th>
+                            <th> @_localization.GetKey("DepartureTime").Value</th>
+                            <th> @_localization.GetKey("ArrivalTime").Value</th>
+                            <th> @_localization.GetKey("PlaneName").Value</th>
+                            <th> @_localization.GetKey("PlaneTailNumber").Value</th>
+                            <th> @_localization.GetKey("Operations").Value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,16 +81,13 @@
                 </table>
             </div>
         </div>
-        <!-- /.card-body -->
         <div class="card-footer">
             Footer
         </div>
-        <!-- /.card-footer-->
     </div>
-    <!-- /.card -->
 
 </section>
-<!-- /.content -->
+
 
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

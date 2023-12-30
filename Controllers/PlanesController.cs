@@ -18,6 +18,7 @@ public class PlanesController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.SelectedLanguage = _localization.GetCurrentLanguage(Request);
         var response = _planeRepository.GetAll();
         return View(response);
     }
