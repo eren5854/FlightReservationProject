@@ -5,16 +5,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationProject.Repositories;
 
-public sealed class RouteRepository(ApplicationDbContext context)
+public sealed class RouteRepository
 {
+    private readonly ApplicationDbContext _context;
+    public RouteRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
     public IEnumerable<Route> GetAll()
     {
-        return context.Set<Route>().Include(p => p.Plane).OrderByDescending(o => o.DepartureTime).ToList();
+        return _context.Set<Route>().Include(p => p.Plane).OrderByDescending(o => o.DepartureTime).ToList();
     }
 
     public IEnumerable<Route> GetRoutesByParameter(GetRouteDto request)
     {
-        return context.Set<Route>()
+        return _context.Set<Route>()
             .Where(p=> 
                 p.Departure == request.Departure && 
                 p.Arrival == request.Arrival && 
@@ -26,22 +31,22 @@ public sealed class RouteRepository(ApplicationDbContext context)
 
     public IEnumerable<Plane> GetAllPlane() 
     {
-        return context.Set<Plane>().OrderBy(p => p.Name).ToList();
+        return _context.Set<Plane>().OrderBy(p => p.Name).ToList();
     }
 
     public void Add(Route route)
     {
-        context.Add(route);
-        context.SaveChanges();
+        _context.Add(route);
+        _context.SaveChanges();
     }
 
     public void RemoveById(Guid id)
     {
-        Route? route = context.Set<Route>().Find(id);
+        Route? route = _context.Set<Route>().Find(id);
         if (route is not null)
         {
-            context.Remove(route);
-            context.SaveChanges();
+            _context.Remove(route);
+            _context.SaveChanges();
         }
     }
 }
