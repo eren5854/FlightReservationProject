@@ -64,7 +64,7 @@ public class Program
             configuration.AccessDeniedPath = "/Account/Login";
             configuration.LogoutPath = "/Account/Login";
             configuration.ExpireTimeSpan = TimeSpan.FromHours(1);
-            configuration.Cookie.Name = "UserLoinCookie";
+            configuration.Cookie.Name = "UserLoginCookie";
         });
         #endregion
 
@@ -91,7 +91,7 @@ public class Program
 
         app.UseAuthorization();
 
-        #region Admin Register
+        #region Admin User Route
         //Veri tabanýnda y225012058@sakarya.edu.tr email adýnda kayýtlý bir admin yoksa program çalýþtýðýnda default olarak admin ekliyor.
         using (var scope = app.Services.CreateScope())
         {
@@ -126,16 +126,86 @@ public class Program
 
                 context.SaveChanges();
             }
-            if (!context.Set<User>().Any(p=>p.Email == "emin@gmail.com"))
+
+            if (!context.Set<User>().Any(p=>p.Email == "eren@gmail.com"))
             {
                 User user1 = new()
                 {
-                    FirstName = "Mehmet Emin",
+                    FirstName = "Ýhsan Eren",
                     LastName = "Delibaþ",
-                    Email = "emin@gmail.com",
-                    Password = "emin123"
+                    Email = "eren@gmail.com",
+                    Password = "eren123"
                 };
                 context.Set<User>().Add(user1);
+                context.SaveChanges();
+            }
+
+            if (!context.Set<Plane>().Any())
+            {
+                Plane plane = new()
+                {
+                    Name = "Airbus",
+                    TailNumber = "A330-200",
+                    TotalSeats = 268,
+                    SeatConfiguration = "2-4-2"
+                };
+                context.Set<Plane>().Add(plane);
+
+                Plane plane2 = new()
+                {
+                    Name = "Embraer",
+                    TailNumber = "700",
+                    TotalSeats = 88,
+                    SeatConfiguration = "2-2"
+                };
+                context.Set<Plane>().Add(plane2);
+                context.SaveChanges();
+            }
+
+            if (!context.Set<Route>().Any())
+            {
+                Plane? plane = context.Set<Plane>().Where(p => p.Name == "Airbus" && p.TailNumber == "A330-200").FirstOrDefault();
+                Plane? plane2 = context.Set<Plane>().Where(p => p.Name == "Embraer" && p.TailNumber == "700").FirstOrDefault();
+
+                Route route = new()
+                {
+                    Departure = "Ýstanbul",
+                    Arrival = "Ankara",
+                    DepartureTime = DateTime.Parse("2024-01-10 15:30:00"),
+                    ArrivalTime = DateTime.Parse("2024-01-10 16:30:00"),
+                    PlaneId = plane!.Id
+                };
+                context.Set<Route>().Add(route);
+
+                Route route2 = new()
+                {
+                    Departure = "Ýstanbul",
+                    Arrival = "Ankara",
+                    DepartureTime = DateTime.Parse("2024-01-10 12:30:00"),
+                    ArrivalTime = DateTime.Parse("2024-01-10 13:30:00"),
+                    PlaneId = plane2!.Id
+                };
+                context.Set<Route>().Add(route2);
+
+                Route route3 = new()
+                {
+                    Departure = "Sivas",
+                    Arrival = "Ýstanbul",
+                    DepartureTime = DateTime.Parse("2024-01-11 09:30:00"),
+                    ArrivalTime = DateTime.Parse("2024-01-11 11:00:00"),
+                    PlaneId = plane2!.Id
+                };
+                context.Set<Route>().Add(route3);
+                
+                Route route4 = new()
+                {
+                    Departure = "Antalya",
+                    Arrival = "Ankara",
+                    DepartureTime = DateTime.Parse("2024-01-13 20:30:00"),
+                    ArrivalTime = DateTime.Parse("2024-01-13 21:45:00"),
+                    PlaneId = plane!.Id
+                };
+                context.Set<Route>().Add(route4);
                 context.SaveChanges();
             }
         }
