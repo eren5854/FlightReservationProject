@@ -127,11 +127,7 @@ public class Program
                 context.SaveChanges();
             }
 
-<<<<<<< HEAD
             if (!context.Set<User>().Any(p=>p.Email == "eren@gmail.com"))
-=======
-            if (!context.Set<User>().Any(p=>p.Email == "emin@gmail.com"))
->>>>>>> e705530f0dccf54861920124d88747cf8269c751
             {
                 User user1 = new()
                 {
@@ -166,11 +162,7 @@ public class Program
                 context.SaveChanges();
             }
 
-<<<<<<< HEAD
             if (!context.Set<Route>().Any())
-=======
-            if (!context.Set<Route>().Any(p => p.Departure == "Ýstanbul" && p.Arrival == "Ankara" && p.DepartureTime == DateTime.Parse("2024-02-21 15:30:00") && p.ArrivalTime == DateTime.Parse("2024-02-21 16:30:00")))
->>>>>>> e705530f0dccf54861920124d88747cf8269c751
             {
                 Plane? plane = context.Set<Plane>().Where(p => p.Name == "Airbus" && p.TailNumber == "A330-200").FirstOrDefault();
                 Plane? plane2 = context.Set<Plane>().Where(p => p.Name == "Embraer" && p.TailNumber == "700").FirstOrDefault();

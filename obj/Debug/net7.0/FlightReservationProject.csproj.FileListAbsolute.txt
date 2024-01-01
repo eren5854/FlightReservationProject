@@ -81,7 +81,6 @@ C:\Users\ihsan\Desktop\FlightReservationProject-main\FlightReservationProject-ma
 C:\Users\ihsan\Desktop\FlightReservationProject-main\FlightReservationProject-main\obj\Debug\net7.0\FlightReservationProject.pdb
 C:\Users\ihsan\Desktop\FlightReservationProject-main\FlightReservationProject-main\obj\Debug\net7.0\FlightReservationProject.genruntimeconfig.cache
 C:\Users\ihsan\Desktop\FlightReservationProject-main\FlightReservationProject-main\obj\Debug\net7.0\ref\FlightReservationProject.dll
-<<<<<<< HEAD
 E:\Eren\FlightReservationProject-main\FlightReservationProject-main\bin\Debug\net7.0\appsettings.Development.json
 E:\Eren\FlightReservationProject-main\FlightReservationProject-main\bin\Debug\net7.0\appsettings.json
 E:\Eren\FlightReservationProject-main\FlightReservationProject-main\bin\Debug\net7.0\FlightReservationProject.staticwebassets.runtime.json
@@ -165,5 +164,3 @@ E:\Eren\FlightReservationProject-main\FlightReservationProject-main\obj\Debug\ne
 E:\Eren\FlightReservationProject-main\FlightReservationProject-main\obj\Debug\net7.0\FlightReservationProject.pdb
 E:\Eren\FlightReservationProject-main\FlightReservationProject-main\obj\Debug\net7.0\FlightReservationProject.genruntimeconfig.cache
 E:\Eren\FlightReservationProject-main\FlightReservationProject-main\obj\Debug\net7.0\ref\FlightReservationProject.dll
-=======
->>>>>>> e705530f0dccf54861920124d88747cf8269c751
