@@ -16,3 +16,4 @@
 		password: eren123
 
 
+Uygulama chrome tarayıcıda düzgün çalışmıyorsa opera tarayıcıda test edilebilir. 
