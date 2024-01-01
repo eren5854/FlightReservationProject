@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "9rj5bnla5EmNPa1OogH8jtn46PCd1rS8732Y5ZtNsdE4LcPtCJksgy5LWugdoytFfSX/9Dn6HYOKrT7QpDTuVQ==",
   "success": true,
   "projectFilePath": "E:\\Eren\\FlightReservationProject-main\\FlightReservationProject-main\\FlightReservationProject.csproj",
+=======
+  "dgSpecHash": "4R5ECxftTcrr8/1HPQXbegDriRDNGn0KxosbAiVuNidnzoXkGAiFDqaMvveA7TM1ewEG+M2sg/NbA2cP6tUKPQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ihsan\\Desktop\\FlightReservationProject-main\\FlightReservationProject-main\\FlightReservationProject.csproj",
+>>>>>>> e705530f0dccf54861920124d88747cf8269c751
   "expectedPackageFiles": [
     "C:\\Users\\ihsan\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ihsan\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
